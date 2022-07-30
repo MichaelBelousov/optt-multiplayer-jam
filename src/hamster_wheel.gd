@@ -17,8 +17,19 @@ func _ready() -> void:
 func add_hamster() -> void:
 	var h := Hamster.instance()
 	add_child(h)
+	set_hamster_position()
+
+
+func remove_hamster() -> void:
+	var h := get_child(get_child_count() - 1)
+	remove_child(h)
+	h.queue_free()
+	set_hamster_position()
+
+
+func set_hamster_position() -> void:
 	for child in get_children():
-		if child is Camera2D:
+		if not child is CollisionShape2D:
 			continue
 		child.position = Vector2(BASE_RADIUS * (get_child_count() - 3), 0).rotated((child.get_index() - 1.0) / (get_child_count() - 2) * (2 * PI))
 		child.rotation = (child.get_index() - 1.0) / (get_child_count() - 2) * (2 * PI)
