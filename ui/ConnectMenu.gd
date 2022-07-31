@@ -19,8 +19,8 @@ func on_public_ip_resp(_result, _response_code, _headers, body) -> void:
 
 func on_host() -> void:
   $AudioStreamPlayer.play()
-  var HostNetContext = preload("res://net/HostNetContext.gd")
-  var netCtx = HostNetContext.new()
+  var ServerNetContext = preload("res://net/ServerNetContext.gd")
+  var netCtx = ServerNetContext.new()
   netCtx.name = "NetContext"
   get_tree().root.add_child(netCtx)
 
