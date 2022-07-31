@@ -22,7 +22,7 @@ margin_bottom = 37.0
 margin_right = 222.0
 margin_bottom = 24.0
 align = 1
-placeholder_text = "Loading Your IP"
+placeholder_text = "Loading Your IP, if hosting wait..."
 
 [node name="Center" type="CenterContainer" parent="VBoxContainer"]
 margin_top = 28.0
