@@ -1,4 +1,14 @@
+
 extends Panel
+
+var connected_player_count: int = 0 setget set_connected_player_count
+var player_count_label: Label = null
+
+func set_connected_player_count(val: int) -> void:
+  connected_player_count = val
+  if player_count_label != null:
+    player_count_label.text = "Connected players: " + str(val)
+
 
 func _ready() -> void:
   setup_get_public_ip()
@@ -47,6 +57,9 @@ func setup_host_ui() -> void:
   start.text = "Start"
   start.connect("pressed", self, "on_start")
   $VBoxContainer/Center/Btns.add_child(start)
+  player_count_label = Label.new()
+  self.connected_player_count = 0  # need `self` to invoke setter
+  $VBoxContainer/Center/Btns.add_child(player_count_label)
 
 
 # NOTE: could be done better by instancing a scene to replace `Btns`

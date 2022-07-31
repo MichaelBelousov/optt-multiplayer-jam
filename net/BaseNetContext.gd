@@ -32,6 +32,13 @@ remote func register(info: Dictionary) -> void:
   var peer_id = get_tree().get_rpc_sender_id()
   connections[peer_id] = info
 
+  # HACK: bad way of accessing the connected_player_count state
+  var cur_scene = get_tree().get_current_scene()
+  if cur_scene.has_method("set_connected_player_count"):
+    var connected_player_count = connections.size() - 1
+    cur_scene.set_connected_player_count(connected_player_count)
+
+
 func network_peer_connected(id: int) -> void:
   var local_id = get_tree().get_network_unique_id()
   var local_info = connections[local_id]
