@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="optt-multiplayer-jam"
-run/main_scene="res://src/test.tscn"
+run/main_scene="res://ui/ConnectMenu.tscn"
 config/icon="res://art-src/icon.png"
 
 [importer_defaults]

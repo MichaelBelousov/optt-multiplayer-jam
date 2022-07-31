@@ -9,6 +9,7 @@ export var Hamster: PackedScene
 
 
 func _ready() -> void:
+	rpc_config("global_position", MultiplayerAPI.RPC_MODE_REMOTE)
 	$RayCast2D.set_as_toplevel(true)
 	for _i in 10:
 		add_hamster()
@@ -36,9 +37,17 @@ func set_hamster_position() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# TODO: duplicate input values by synchronized input of other player(s)
 	var input := Vector2(Input.get_axis("move_left", "move_right"), 0)
 	apply_impulse(-input * BASE_RADIUS * (get_child_count() - 3), input * BASE_IMPULSE * (get_child_count() - 2) * delta)
 	if Input.is_action_pressed("move_up") and $RayCast2D.is_colliding():
 		apply_impulse(-Vector2.UP * BASE_RADIUS * (get_child_count() - 3), Vector2.UP * JUMP_FORCE * (get_child_count() - 2))
 	$RayCast2D.position = position
 	$RayCast2D.cast_to = Vector2(0, BASE_RADIUS * (get_child_count() - 3) + 64)
+
+func _process(_delta: float) -> void:
+	if is_network_master():
+		rset_unreliable("global_position", global_position)
+	else:
+		# TODO: synchronize input state to master (per connection?)
+		pass
