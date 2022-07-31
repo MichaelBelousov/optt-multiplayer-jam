@@ -55,7 +55,7 @@ func setup_host_ui() -> void:
   $VBoxContainer/Center/Btns/Join.visible = false
   var start = Button.new()
   start.text = "Start"
-  start.connect("pressed", self, "on_start")
+  start.connect("pressed", self, "on_start_pressed")
   $VBoxContainer/Center/Btns.add_child(start)
   player_count_label = Label.new()
   self.connected_player_count = 0  # need `self` to invoke setter
@@ -71,7 +71,13 @@ func setup_join_ui() -> void:
   instr.text = "Please wait for the host to start the game"
   $VBoxContainer/Center/Btns.add_child(instr)
 
+
+func on_start_pressed() -> void:
+  rpc("start")
+
+
 # NOTE: possible we'll need to add a wait step on some synchronization due to lag, we'll see...
-func on_start() -> void:
-  get_tree().change_scene_to(preload("res://src/test.tscn"))
+remotesync func start() -> void:
+  var main_scene = preload("res://src/test.tscn")
+  assert(OK == get_tree().change_scene_to(main_scene), "couldn't start the main scene")
   # potentially might fix desync issues by waiting here
