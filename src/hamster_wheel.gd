@@ -1,16 +1,16 @@
 extends RigidBody2D
 
 
-const BASE_RADIUS := 10
-const BASE_IMPULSE := 200
-const JUMP_FORCE := 25
+const BASE_RADIUS := 3
+const BASE_IMPULSE := 50
+const JUMP_FORCE := 1
 
 export var Hamster: PackedScene
 
 
 func _ready() -> void:
 	$RayCast2D.set_as_toplevel(true)
-	for i in range(10):
+	for _i in 10:
 		add_hamster()
 
 
