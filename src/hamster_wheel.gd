@@ -1,9 +1,9 @@
 extends RigidBody2D
 
 
-const BASE_RADIUS := 3
-const BASE_IMPULSE := 50
-const JUMP_FORCE := 1
+export var BASE_RADIUS := 3.0
+export var BASE_IMPULSE := 50.0
+export var JUMP_FORCE := 1.0
 
 export var Hamster: PackedScene
 
