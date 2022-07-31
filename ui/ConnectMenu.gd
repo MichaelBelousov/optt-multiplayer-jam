@@ -3,6 +3,7 @@ extends Panel
 func _ready() -> void:
   setup_get_public_ip()
 
+
 func setup_get_public_ip() -> void:
   var req = HTTPRequest.new()
   add_child(req)
@@ -24,6 +25,7 @@ func on_host() -> void:
   var netCtx = ServerNetContext.new()
   netCtx.name = "NetContext"
   get_tree().root.add_child(netCtx)
+  setup_host_ui()
 
 
 func on_join() -> void:
@@ -33,3 +35,30 @@ func on_join() -> void:
   var netCtx = ClientNetContext.new(addr)
   netCtx.name = "NetContext"
   get_tree().root.add_child(netCtx)
+  setup_join_ui()
+
+
+# NOTE: could be done better by instancing a scene to replace `Btns`
+func setup_host_ui() -> void:
+  $VBoxContainer/IPInput.editable = false
+  $VBoxContainer/Center/Btns/Host.visible = false
+  $VBoxContainer/Center/Btns/Join.visible = false
+  var start = Button.new()
+  start.text = "Start"
+  start.connect("pressed", self, "on_start")
+  $VBoxContainer/Center/Btns.add_child(start)
+
+
+# NOTE: could be done better by instancing a scene to replace `Btns`
+func setup_join_ui() -> void:
+  $VBoxContainer/IPInput.editable = false
+  $VBoxContainer/Center/Btns/Host.visible = false
+  $VBoxContainer/Center/Btns/Join.visible = false
+  var instr = Label.new()
+  instr.text = "Please wait for the host to start the game"
+  $VBoxContainer/Center/Btns.add_child(instr)
+
+# NOTE: possible we'll need to add a wait step on some synchronization due to lag, we'll see...
+func on_start() -> void:
+  get_tree().change_scene_to(preload("res://src/test.tscn"))
+  # potentially might fix desync issues by waiting here
