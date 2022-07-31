@@ -38,6 +38,7 @@ custom_constants/separation = 16
 [node name="Host" type="Button" parent="VBoxContainer/Center/Btns"]
 margin_right = 42.0
 margin_bottom = 20.0
+disabled = true
 text = "Host"
 
 [node name="Join" type="Button" parent="VBoxContainer/Center/Btns"]

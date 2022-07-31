@@ -9,6 +9,13 @@ var port := 17451
 var connections := {}
 
 func _ready() -> void:
+  get_tree().connect("network_peer_connected", self, "network_peer_connected")
+  get_tree().connect("network_peer_disconnected", self, "network_peer_disconnected")
+
+  var new_peer = NetworkedMultiplayerENet.new();
+  init_peer(new_peer)
+  get_tree().network_peer = new_peer
+
   var local_id = get_tree().get_network_unique_id()
   # sample info for now, might need it later
   var local_info = {
@@ -16,11 +23,10 @@ func _ready() -> void:
   }
   connections[local_id] = local_info
 
-  var new_peer = NetworkedMultiplayerENet.new();
-  get_tree().network_peer = new_peer
-
-  get_tree().connect("network_peer_connected", self, "network_peer_connected")
-  get_tree().connect("network_peer_disconnected", self, "network_peer_disconnected")
+## must be overridden to put peer in connecting state, e.g. call create_client or create_server
+## otherwise assigning it to get_tree().network_peer will fail in the disconnected state
+func init_peer(_peer: NetworkedMultiplayerENet) -> void:
+  assert(false, "must be overridden")
 
 remote func register(info: Dictionary) -> void:
   var peer_id = get_tree().get_rpc_sender_id()
