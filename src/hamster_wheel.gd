@@ -7,8 +7,14 @@ export var JUMP_FORCE := 1.0
 
 export var Hamster: PackedScene
 
-remote var p2_x_input := 0.0
-remote var p2_space_state := false
+remote var p2_remote_x_input := 0.0
+remote var p2_remote_jump_input := false
+
+var left_action = "move_left"
+var right_action = "move_right"
+var jump_action = "move_up"
+
+var is_p2_local = false
 
 func _ready() -> void:
 	rset_config("global_position", MultiplayerAPI.RPC_MODE_PUPPET)
@@ -17,6 +23,17 @@ func _ready() -> void:
 	$RayCast2D.set_as_toplevel(true)
 	for _i in 10:
 		add_hamster()
+
+	var netCtx = get_node("/root/NetContext")
+	var player_count = netCtx.connections.size()
+
+  # disable the local second player (secondary set of inputs) if there is more than one player
+	is_p2_local = player_count == 1
+
+	if is_p2_local:
+		left_action = "p2_move_left"
+		right_action = "p2_move_right"
+		jump_action = "p2_move_jump"
 
 
 func add_hamster() -> void:
@@ -43,9 +60,14 @@ func set_hamster_position() -> void:
 func _physics_process(delta: float) -> void:
 	# TODO: duplicate input values by synchronized input of other player(s)
 	var p1_input = Input.get_axis("move_left", "move_right")
-	var input := Vector2(p1_input + p2_x_input, 0)
+	var p2_input = Input.get_axis("p2_move_left", "p2_move_right") if is_p2_local else p2_remote_x_input
+	var input := Vector2(p1_input + p2_input, 0)
 	apply_impulse(-input * BASE_RADIUS * (get_child_count() - 3), input * BASE_IMPULSE * (get_child_count() - 2) * delta)
-	var is_jump_pressed = Input.is_action_pressed("move_up") or p2_space_state
+	var is_jump_pressed = (
+		Input.is_action_pressed("move_up")
+		or (is_p2_local and Input.is_action_pressed("p2_move_up"))
+		or p2_remote_jump_input
+	)
 	if is_jump_pressed and $RayCast2D.is_colliding():
 		apply_impulse(-Vector2.UP * BASE_RADIUS * (get_child_count() - 3), Vector2.UP * JUMP_FORCE * (get_child_count() - 2))
 	$RayCast2D.position = position
@@ -58,5 +80,5 @@ func _process(_delta: float) -> void:
 		rset_unreliable("rotation", rotation)
 	else:
 		# NOTE: may want to do this on _input for less lag?
-	  rset_unreliable("p2_x_input", Input.get_axis("p2_move_left", "p2_move_right"))
-	  rset_unreliable("p2_space_state", Input.is_action_pressed("p2_move_up"))
+	  rset_unreliable("p2_remote_x_input", Input.get_axis(left_action, right_action))
+	  rset_unreliable("p2_remote_jump_input", Input.is_action_pressed(jump_action))
