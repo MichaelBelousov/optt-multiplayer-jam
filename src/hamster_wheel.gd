@@ -11,7 +11,8 @@ remote var p2_x_input := 0.0
 remote var p2_space_state := false
 
 func _ready() -> void:
-	rset_config("global_position", MultiplayerAPI.RPC_MODE_MASTERSYNC)
+	rset_config("global_position", MultiplayerAPI.RPC_MODE_PUPPET)
+	rset_config("rotation", MultiplayerAPI.RPC_MODE_PUPPET)
 
 	$RayCast2D.set_as_toplevel(true)
 	for _i in 10:
@@ -38,6 +39,7 @@ func set_hamster_position() -> void:
 		child.position = Vector2(BASE_RADIUS * (get_child_count() - 3), 0).rotated((child.get_index() - 1.0) / (get_child_count() - 2) * (2 * PI))
 		child.rotation = (child.get_index() - 1.0) / (get_child_count() - 2) * (2 * PI)
 
+
 func _physics_process(delta: float) -> void:
 	# TODO: duplicate input values by synchronized input of other player(s)
 	var p1_input = Input.get_axis("move_left", "move_right")
@@ -53,6 +55,7 @@ func _physics_process(delta: float) -> void:
 func _process(_delta: float) -> void:
 	if is_network_master():
 		rset_unreliable("global_position", global_position)
+		rset_unreliable("rotation", rotation)
 	else:
 		# NOTE: may want to do this on _input for less lag?
 	  rset_unreliable("p2_x_input", Input.get_axis("p2_move_left", "p2_move_right"))
