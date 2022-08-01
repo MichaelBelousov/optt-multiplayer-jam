@@ -61,15 +61,21 @@ func setup_host_ui() -> void:
   self.connected_player_count = 0  # need `self` to invoke setter
   $VBoxContainer/Center/Btns.add_child(player_count_label)
 
+var join_info_label = null
 
 # NOTE: could be done better by instancing a scene to replace `Btns`
 func setup_join_ui() -> void:
   $VBoxContainer/IPInput.editable = false
   $VBoxContainer/Center/Btns/Host.visible = false
   $VBoxContainer/Center/Btns/Join.visible = false
-  var instr = Label.new()
-  instr.text = "Please wait for the host to start the game"
-  $VBoxContainer/Center/Btns.add_child(instr)
+  get_tree().connect("connected_to_server", self, "on_client_connected")
+  join_info_label = Label.new()
+  join_info_label.text = "Connecting..."
+  $VBoxContainer/Center/Btns.add_child(join_info_label)
+
+
+func on_client_connected():
+  join_info_label.text = "Please wait for the host to start the game"
 
 
 func on_start_pressed() -> void:
