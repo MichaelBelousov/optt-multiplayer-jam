@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Placeholder.wav-1ff2b79ecc890888f4545fa51c2d6fdb.sample"
+path="res://.import/Placeholder.wav-3123017ff34cd0b0f39b1eb238371a3d.sample"
 
 [deps]
 
-source_file="res://Audio Files/Placeholder.wav"
-dest_files=[ "res://.import/Placeholder.wav-1ff2b79ecc890888f4545fa51c2d6fdb.sample" ]
+source_file="res://audio-files/Placeholder.wav"
+dest_files=[ "res://.import/Placeholder.wav-3123017ff34cd0b0f39b1eb238371a3d.sample" ]
 
 [params]
 
