@@ -19,6 +19,7 @@ margin_right = -144.0
 margin_bottom = -84.0
 
 [node name="Options" type="VBoxContainer" parent="Tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -40,7 +41,6 @@ pressed = true
 text = "Sound Effects On"
 
 [node name="Connection" type="VBoxContainer" parent="Tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -49,18 +49,19 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="IPInput" type="LineEdit" parent="Tabs/Connection"]
-margin_right = 93.0
+margin_right = 729.0
 margin_bottom = 24.0
 align = 1
 placeholder_text = "Loading Your IP, if hosting wait..."
 
 [node name="Center" type="CenterContainer" parent="Tabs/Connection"]
 margin_top = 28.0
-margin_right = 93.0
+margin_right = 729.0
 margin_bottom = 48.0
 
 [node name="Btns" type="HBoxContainer" parent="Tabs/Connection/Center"]
-margin_right = 93.0
+margin_left = 318.0
+margin_right = 411.0
 margin_bottom = 20.0
 custom_constants/separation = 16
 
