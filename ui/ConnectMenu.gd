@@ -4,6 +4,9 @@ extends Panel
 var connected_player_count: int = 0 setget set_connected_player_count
 var player_count_label: Label = null
 
+onready var generic_opts: VBoxContainer = $Tabs/Options
+onready var connection_opts: VBoxContainer = $Tabs/Connection
+
 func set_connected_player_count(val: int) -> void:
   connected_player_count = val
   if player_count_label != null:
@@ -25,8 +28,9 @@ func setup_get_public_ip() -> void:
 
 func on_public_ip_resp(_result, _response_code, _headers, body) -> void:
   var public_ip = body.get_string_from_utf8()
-  $VBoxContainer/Center/Btns/Host.disabled = false
-  $VBoxContainer/IPInput.text = public_ip
+  print(connection_opts)
+  connection_opts.get_node("Center/Btns/Host").disabled = false
+  connection_opts.get_node("IPInput").text = public_ip
 
 
 func on_host() -> void:
@@ -41,7 +45,7 @@ func on_host() -> void:
 func on_join() -> void:
   $AudioStreamPlayer.play()
   var ClientNetContext = preload("res://net/ClientNetContext.gd")
-  var addr = $VBoxContainer/IPInput.text
+  var addr = connection_opts.get_node("IPInput").text
   var netCtx = ClientNetContext.new(addr)
   netCtx.name = "NetContext"
   get_tree().root.add_child(netCtx)
@@ -50,28 +54,28 @@ func on_join() -> void:
 
 # NOTE: could be done better by instancing a scene to replace `Btns`
 func setup_host_ui() -> void:
-  $VBoxContainer/IPInput.editable = false
-  $VBoxContainer/Center/Btns/Host.visible = false
-  $VBoxContainer/Center/Btns/Join.visible = false
+  connection_opts.get_node("IPInput").editable = false
+  connection_opts.get_node("Center/Btns/Host").visible = false
+  connection_opts.get_node("Center/Btns/Join").visible = false
   var start = Button.new()
   start.text = "Start"
   start.connect("pressed", self, "on_start_pressed")
-  $VBoxContainer/Center/Btns.add_child(start)
+  connection_opts.get_node("Center/Btns").add_child(start)
   player_count_label = Label.new()
   self.connected_player_count = 0  # need `self` to invoke setter
-  $VBoxContainer/Center/Btns.add_child(player_count_label)
+  connection_opts.get_node("Center/Btns").add_child(player_count_label)
 
 var join_info_label = null
 
 # NOTE: could be done better by instancing a scene to replace `Btns`
 func setup_join_ui() -> void:
-  $VBoxContainer/IPInput.editable = false
-  $VBoxContainer/Center/Btns/Host.visible = false
-  $VBoxContainer/Center/Btns/Join.visible = false
+  connection_opts.get_node("IPInput").editable = false
+  connection_opts.get_node("Center/Btns/Host").visible = false
+  connection_opts.get_node("Center/Btns/Join").visible = false
   get_tree().connect("connected_to_server", self, "on_client_connected")
   join_info_label = Label.new()
   join_info_label.text = "Connecting..."
-  $VBoxContainer/Center/Btns.add_child(join_info_label)
+  connection_opts.get_node("Center/Btns").add_child(join_info_label)
 
 
 func on_client_connected():
@@ -87,3 +91,16 @@ remotesync func start() -> void:
   var main_scene = preload("res://src/test.tscn")
   assert(OK == get_tree().change_scene_to(main_scene), "couldn't start the main scene")
   # potentially might fix desync issues by waiting here
+
+
+const MASTER_BUS_INDEX = 0
+const BGMUSIC_BUS_INDEX = 1
+const SFX_BUS_INDEX = 2
+
+
+func on_toggle_music_on(button_pressed: bool) -> void:
+  AudioServer.set_bus_mute(BGMUSIC_BUS_INDEX, not button_pressed)
+
+
+func on_toggle_sfx_on(button_pressed: bool) -> void:
+  AudioServer.set_bus_mute(SFX_BUS_INDEX, not button_pressed)

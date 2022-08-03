@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/ConnectMenu.gd" type="Script" id=1]
 [ext_resource path="res://audio-files/Placeholder.wav" type="AudioStream" id=2]
+[ext_resource path="res://audio-files/lvl_2.ogg" type="AudioStream" id=3]
 
 [node name="Panel" type="Panel"]
 anchor_right = 1.0
@@ -9,46 +10,91 @@ anchor_bottom = 1.0
 rect_scale = Vector2( 1.00938, 0.999507 )
 script = ExtResource( 1 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_top = 0.5
+[node name="Tabs" type="TabContainer" parent="."]
 anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 401.0
-margin_top = -37.0
-margin_right = -401.0
-margin_bottom = 37.0
+anchor_bottom = 1.0
+margin_left = 143.0
+margin_top = 84.0
+margin_right = -144.0
+margin_bottom = -84.0
 
-[node name="IPInput" type="LineEdit" parent="VBoxContainer"]
-margin_right = 222.0
+[node name="Options" type="VBoxContainer" parent="Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="MusicCheck" type="CheckBox" parent="Tabs/Options"]
+margin_right = 729.0
+margin_bottom = 24.0
+pressed = true
+text = "Music On"
+
+[node name="SfxCheck" type="CheckBox" parent="Tabs/Options"]
+margin_top = 28.0
+margin_right = 729.0
+margin_bottom = 52.0
+pressed = true
+text = "Sound Effects On"
+
+[node name="Connection" type="VBoxContainer" parent="Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="IPInput" type="LineEdit" parent="Tabs/Connection"]
+margin_right = 93.0
 margin_bottom = 24.0
 align = 1
 placeholder_text = "Loading Your IP, if hosting wait..."
 
-[node name="Center" type="CenterContainer" parent="VBoxContainer"]
+[node name="Center" type="CenterContainer" parent="Tabs/Connection"]
 margin_top = 28.0
-margin_right = 222.0
+margin_right = 93.0
 margin_bottom = 48.0
 
-[node name="Btns" type="HBoxContainer" parent="VBoxContainer/Center"]
-margin_left = 64.0
-margin_right = 157.0
+[node name="Btns" type="HBoxContainer" parent="Tabs/Connection/Center"]
+margin_right = 93.0
 margin_bottom = 20.0
 custom_constants/separation = 16
 
-[node name="Host" type="Button" parent="VBoxContainer/Center/Btns"]
+[node name="Host" type="Button" parent="Tabs/Connection/Center/Btns"]
 margin_right = 42.0
 margin_bottom = 20.0
 disabled = true
 text = "Host"
 
-[node name="Join" type="Button" parent="VBoxContainer/Center/Btns"]
+[node name="Join" type="Button" parent="Tabs/Connection/Center/Btns"]
 margin_left = 58.0
 margin_right = 93.0
 margin_bottom = 20.0
 text = "Join"
 
+[node name="Margins" type="MarginContainer" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+bus = "sfx"
 
-[connection signal="pressed" from="VBoxContainer/Center/Btns/Host" to="." method="on_host"]
-[connection signal="pressed" from="VBoxContainer/Center/Btns/Join" to="." method="on_join"]
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+bus = "bgmusic"
+
+[connection signal="toggled" from="Tabs/Options/MusicCheck" to="." method="on_toggle_music_on"]
+[connection signal="toggled" from="Tabs/Options/SfxCheck" to="." method="on_toggle_sfx_on"]
+[connection signal="pressed" from="Tabs/Connection/Center/Btns/Host" to="." method="on_host"]
+[connection signal="pressed" from="Tabs/Connection/Center/Btns/Join" to="." method="on_join"]
