@@ -24,7 +24,7 @@ color = Color( 0.215686, 0.14902, 0.113725, 1 )
 polygon = PoolVector2Array( 640, -19, 640, 13, -520, 13, -520, -19 )
 
 [node name="Flag" parent="." instance=ExtResource( 3 )]
-position = Vector2( 966, 532 )
+position = Vector2( 968, 552 )
 
 [node name="HamsterWheel" parent="." instance=ExtResource( 1 )]
 position = Vector2( 516, 303 )

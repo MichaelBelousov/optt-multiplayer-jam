@@ -4,6 +4,7 @@
 [ext_resource path="res://src/hamster.tscn" type="PackedScene" id=2]
 
 [node name="HamsterWheel" type="RigidBody2D"]
+mass = 2.0
 script = ExtResource( 1 )
 Hamster = ExtResource( 2 )
 
