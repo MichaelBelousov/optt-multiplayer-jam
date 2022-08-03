@@ -34,7 +34,7 @@ func on_public_ip_resp(_result, _response_code, _headers, body) -> void:
 
 
 func on_host() -> void:
-  $AudioStreamPlayer.play()
+  $UIClick.play()
   var ServerNetContext = preload("res://net/ServerNetContext.gd")
   var netCtx = ServerNetContext.new()
   netCtx.name = "NetContext"
@@ -43,7 +43,7 @@ func on_host() -> void:
 
 
 func on_join() -> void:
-  $AudioStreamPlayer.play()
+  $UIClick.play()
   var ClientNetContext = preload("res://net/ClientNetContext.gd")
   var addr = connection_opts.get_node("IPInput").text
   var netCtx = ClientNetContext.new(addr)
@@ -83,7 +83,9 @@ func on_client_connected():
 
 
 func on_start_pressed() -> void:
-  rpc("start")
+	$UIClick.play()
+	yield($UIClick, "Finished")  
+	rpc("start")
 
 
 # NOTE: possible we'll need to add a wait step on some synchronization due to lag, we'll see...
@@ -98,9 +100,15 @@ const BGMUSIC_BUS_INDEX = 1
 const SFX_BUS_INDEX = 2
 
 
+
 func on_toggle_music_on(button_pressed: bool) -> void:
+  $UIBackClick.play()
   AudioServer.set_bus_mute(BGMUSIC_BUS_INDEX, not button_pressed)
 
 
 func on_toggle_sfx_on(button_pressed: bool) -> void:
   AudioServer.set_bus_mute(SFX_BUS_INDEX, not button_pressed)
+  #if button_up():
+   # $UIClick.play()
+
+

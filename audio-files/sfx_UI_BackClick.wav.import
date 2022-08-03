@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_UI_BackClick.wav-83a9879b70d25e649b9fee1d8f7ceaee.sample"
+
+[deps]
+
+source_file="res://audio-files/sfx_UI_BackClick.wav"
+dest_files=[ "res://.import/sfx_UI_BackClick.wav-83a9879b70d25e649b9fee1d8f7ceaee.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
