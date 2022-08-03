@@ -24,16 +24,17 @@ func _ready() -> void:
 	for _i in 10:
 		add_hamster()
 
-	var netCtx = get_node("/root/NetContext")
-	var player_count = netCtx.connections.size()
+	var netCtx = get_node_or_null("/root/NetContext")
+	if netCtx != null:
+		var player_count = netCtx.connections.size()
 
-  # disable the local second player (secondary set of inputs) if there is more than one player
-	is_p2_local = player_count == 1
+		# disable the local second player (secondary set of inputs) if there is more than one player
+		is_p2_local = player_count == 1
 
-	if is_p2_local:
-		left_action = "p2_move_left"
-		right_action = "p2_move_right"
-		jump_action = "p2_move_jump"
+		if is_p2_local:
+			left_action = "p2_move_left"
+			right_action = "p2_move_right"
+			jump_action = "p2_move_jump"
 
 
 func add_hamster() -> void:
