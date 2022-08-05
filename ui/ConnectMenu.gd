@@ -90,7 +90,7 @@ func on_start_pressed() -> void:
 
 # NOTE: possible we'll need to add a wait step on some synchronization due to lag, we'll see...
 remotesync func start() -> void:
-  var main_scene = preload("res://src/test.tscn")
+  var main_scene = preload("res://levels/Level1.tscn")
   assert(OK == get_tree().change_scene_to(main_scene), "couldn't start the main scene")
   # potentially might fix desync issues by waiting here
 
