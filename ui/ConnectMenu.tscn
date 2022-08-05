@@ -123,6 +123,7 @@ bus = "bgmusic"
 stream = ExtResource( 4 )
 bus = "sfx"
 
+[connection signal="tab_changed" from="Tabs" to="." method="_on_Tabs_tab_changed"]
 [connection signal="toggled" from="Tabs/Options/MusicCheck" to="." method="on_toggle_music_on"]
 [connection signal="button_up" from="Tabs/Options/SfxCheck" to="." method="on_toggle_sfx_on"]
 [connection signal="toggled" from="Tabs/Options/SfxCheck" to="." method="on_toggle_sfx_on"]

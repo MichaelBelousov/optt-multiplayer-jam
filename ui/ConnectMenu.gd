@@ -108,7 +108,9 @@ func on_toggle_music_on(button_pressed: bool) -> void:
 
 func on_toggle_sfx_on(button_pressed: bool) -> void:
   AudioServer.set_bus_mute(SFX_BUS_INDEX, not button_pressed)
-  #if button_up():
-   # $UIClick.play()
+  if button_pressed:
+    $UIClick.play()
 
 
+func _on_Tabs_tab_changed(tab):
+	$UIClick.play()

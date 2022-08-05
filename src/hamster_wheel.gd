@@ -83,3 +83,5 @@ func _process(_delta: float) -> void:
 		# NOTE: may want to do this on _input for less lag?
 	  rset_unreliable("p2_remote_x_input", Input.get_axis(left_action, right_action))
 	  rset_unreliable("p2_remote_jump_input", Input.is_action_pressed(jump_action))
+
+
