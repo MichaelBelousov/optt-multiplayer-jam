@@ -17,4 +17,4 @@ func get_has_hamster() -> bool:
 func on_area_entered(body: Node) -> void:
   if not has_hamster and body is HamsterWheel:
     body.remove_hamster()
-    has_hamster = true
+    self.has_hamster = true

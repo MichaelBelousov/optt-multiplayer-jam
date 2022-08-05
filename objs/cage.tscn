@@ -11,7 +11,6 @@ extents = Vector2( 18, 12 )
 script = ExtResource( 3 )
 
 [node name="Hamster" parent="." instance=ExtResource( 2 )]
-visible = false
 position = Vector2( 0, -8 )
 rotation = -1.5708
 
