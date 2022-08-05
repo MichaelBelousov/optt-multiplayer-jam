@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ui/ConnectMenu.gd" type="Script" id=1]
 [ext_resource path="res://audio-files/sfx_UI_Click.wav" type="AudioStream" id=2]
-[ext_resource path="res://audio-files/lvl_2.ogg" type="AudioStream" id=3]
+[ext_resource path="res://audio-files/hamster_king_menu.ogg" type="AudioStream" id=3]
 [ext_resource path="res://audio-files/sfx_UI_BackClick.wav" type="AudioStream" id=4]
 [ext_resource path="res://ui/DefaultTheme.tres" type="Theme" id=5]
 
