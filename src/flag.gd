@@ -23,8 +23,6 @@ func _unhandled_input(evt) -> void:
 
 func try_accept_victory() -> void:
   if not victory_satisified: return
-
-
   var cur_scene = get_tree().get_current_scene()
   match cur_scene.name:
     "Level1":
@@ -35,4 +33,3 @@ func try_accept_victory() -> void:
       get_tree().change_scene("res://levels/victory_level.tscn")
     _:
       push_error("no other levels should ever be loaded with a victory condition")
-
