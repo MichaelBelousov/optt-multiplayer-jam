@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui/ConnectMenu.gd" type="Script" id=1]
 [ext_resource path="res://audio-files/sfx_UI_Click.wav" type="AudioStream" id=2]
 [ext_resource path="res://audio-files/lvl_2.ogg" type="AudioStream" id=3]
 [ext_resource path="res://audio-files/sfx_UI_BackClick.wav" type="AudioStream" id=4]
+[ext_resource path="res://ui/DefaultTheme.tres" type="Theme" id=5]
 
 [node name="Panel" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_scale = Vector2( 1.00938, 0.999507 )
+theme = ExtResource( 5 )
 script = ExtResource( 1 )
 
 [node name="Tabs" type="TabContainer" parent="."]
@@ -23,20 +25,20 @@ margin_bottom = -84.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 44.0
 margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="MusicCheck" type="CheckBox" parent="Tabs/Options"]
 margin_right = 729.0
-margin_bottom = 24.0
+margin_bottom = 34.0
 pressed = true
 text = "Music On"
 
 [node name="SfxCheck" type="CheckBox" parent="Tabs/Options"]
-margin_top = 28.0
+margin_top = 38.0
 margin_right = 729.0
-margin_bottom = 52.0
+margin_bottom = 72.0
 pressed = true
 text = "Sound Effects On"
 
@@ -61,9 +63,10 @@ margin_right = 729.0
 margin_bottom = 48.0
 
 [node name="Btns" type="HBoxContainer" parent="Tabs/Connection/Center"]
-margin_left = 318.0
-margin_right = 411.0
-margin_bottom = 20.0
+margin_left = 300.0
+margin_top = -6.0
+margin_right = 428.0
+margin_bottom = 26.0
 custom_constants/separation = 16
 
 [node name="Host" type="Button" parent="Tabs/Connection/Center/Btns"]
