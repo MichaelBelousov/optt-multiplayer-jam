@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://levels/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/flag.tscn" type="PackedScene" id=2]
 [ext_resource path="res://audio-files/lvl_2.ogg" type="AudioStream" id=3]
+[ext_resource path="res://objs/HamsterPickup.tscn" type="PackedScene" id=4]
 
 [node name="Level2" instance=ExtResource( 1 )]
 
@@ -11,3 +12,36 @@ stream = ExtResource( 3 )
 
 [node name="Flag" parent="." index="6" instance=ExtResource( 2 )]
 position = Vector2( 1120, 544 )
+
+[node name="HamsterPickup" parent="." index="7" instance=ExtResource( 4 )]
+position = Vector2( 304, 544 )
+
+[node name="HamsterPickup2" parent="." index="8" instance=ExtResource( 4 )]
+position = Vector2( 376, 544 )
+
+[node name="HamsterPickup3" parent="." index="9" instance=ExtResource( 4 )]
+position = Vector2( 352, 544 )
+
+[node name="HamsterPickup4" parent="." index="10" instance=ExtResource( 4 )]
+position = Vector2( 280, 544 )
+
+[node name="HamsterPickup5" parent="." index="11" instance=ExtResource( 4 )]
+position = Vector2( 256, 544 )
+
+[node name="HamsterPickup6" parent="." index="12" instance=ExtResource( 4 )]
+position = Vector2( 232, 544 )
+
+[node name="HamsterPickup7" parent="." index="13" instance=ExtResource( 4 )]
+position = Vector2( 208, 544 )
+
+[node name="HamsterPickup8" parent="." index="14" instance=ExtResource( 4 )]
+position = Vector2( 184, 544 )
+
+[node name="HamsterPickup9" parent="." index="15" instance=ExtResource( 4 )]
+position = Vector2( 400, 544 )
+
+[node name="HamsterPickup10" parent="." index="16" instance=ExtResource( 4 )]
+position = Vector2( 424, 544 )
+
+[node name="HamsterPickup11" parent="." index="17" instance=ExtResource( 4 )]
+position = Vector2( 448, 544 )

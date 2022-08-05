@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-2e95c5fb9b860c359757f8cf95b624d1.stex"
+path="res://.import/Cage.png-502c0721af1e6fab218fad4c4f3ac007.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art-src/icon.png"
-dest_files=[ "res://.import/icon.png-2e95c5fb9b860c359757f8cf95b624d1.stex" ]
+source_file="res://art-src/Cage.png"
+dest_files=[ "res://.import/Cage.png-502c0721af1e6fab218fad4c4f3ac007.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
