@@ -13,10 +13,10 @@ layer = -1
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1613.0
+margin_left = 2200.0
 margin_top = -350.0
-margin_right = 1906.0
-margin_bottom = 1188.0
+margin_right = 2493.0
+margin_bottom = 1775.0
 rect_rotation = 90.0
 texture = SubResource( 2 )
 expand = true
