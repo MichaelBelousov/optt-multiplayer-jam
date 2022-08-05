@@ -91,12 +91,14 @@ margin_bottom = -4.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tabs/Instructions"]
 margin_right = 729.0
-margin_bottom = 297.0
+margin_bottom = 378.0
 text = "Welcome! Try to get to the flag in each level. You may need to find some hamsters to get bigger and jump higher, or lose some hamsters to get smaller by running into cages, in order to reach the flag in a given level.
 
 Use the WASD keys to move around with W to jump. If you do not connect with someone online, you can also use the arrow keys as the second player's controls, to play together locally. You jump higher together so you may need a second player to win!
 
-The host can press R to restart the current level at any point."
+The host can press R to restart the current level at any point.
+
+Start the game by hosting in the \"Connection\" menu, you must have port 17451 forwarded to host online!"
 fit_content_height = true
 
 [node name="Margins" type="MarginContainer" parent="."]
