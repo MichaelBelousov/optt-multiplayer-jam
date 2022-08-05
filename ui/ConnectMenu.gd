@@ -84,7 +84,7 @@ func on_client_connected():
 
 func on_start_pressed() -> void:
 	$UIClick.play()
-	yield($UIClick, "Finished")  
+	yield($UIClick, "finished")
 	rpc("start")
 
 
