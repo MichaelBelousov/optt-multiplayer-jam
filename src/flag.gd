@@ -14,6 +14,7 @@ func victory() -> void:
   var victory_overlay = preload("res://ui/VictoryOverlay.tscn").instance()
   get_tree().current_scene.add_child(victory_overlay)
   victory_satisified = true
+  $sfx_Victory.play()
 
 
 func _unhandled_input(evt) -> void:

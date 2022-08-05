@@ -7,3 +7,5 @@ func on_area_entered(body: Node) -> void:
     body.add_hamster()
     queue_free()
     $sfx_Gain_Hamster.play()
+
+
