@@ -3,7 +3,7 @@
 extends Node
 
 
-func _input(evt):
+func _input(_evt):
   if Input.is_action_just_pressed("restart_level"):
     var cur_scene = get_tree().get_current_scene()
     if cur_scene.name == "Level1":

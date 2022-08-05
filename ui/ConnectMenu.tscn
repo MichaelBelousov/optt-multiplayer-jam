@@ -47,39 +47,57 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 44.0
 margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="IPInput" type="LineEdit" parent="Tabs/Connection"]
 margin_right = 729.0
-margin_bottom = 24.0
+margin_bottom = 36.0
 align = 1
 placeholder_text = "Loading Your IP, if hosting wait..."
 
 [node name="Center" type="CenterContainer" parent="Tabs/Connection"]
-margin_top = 28.0
+margin_top = 40.0
 margin_right = 729.0
-margin_bottom = 48.0
+margin_bottom = 72.0
 
 [node name="Btns" type="HBoxContainer" parent="Tabs/Connection/Center"]
 margin_left = 300.0
-margin_top = -6.0
 margin_right = 428.0
-margin_bottom = 26.0
+margin_bottom = 32.0
 custom_constants/separation = 16
 
 [node name="Host" type="Button" parent="Tabs/Connection/Center/Btns"]
-margin_right = 42.0
-margin_bottom = 20.0
+margin_right = 58.0
+margin_bottom = 32.0
 disabled = true
 text = "Host"
 
 [node name="Join" type="Button" parent="Tabs/Connection/Center/Btns"]
-margin_left = 58.0
-margin_right = 93.0
-margin_bottom = 20.0
+margin_left = 74.0
+margin_right = 128.0
+margin_bottom = 32.0
 text = "Join"
+
+[node name="Instructions" type="VBoxContainer" parent="Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 44.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tabs/Instructions"]
+margin_right = 729.0
+margin_bottom = 297.0
+text = "Welcome! Try to get to the flag in each level. You may need to find some hamsters to get bigger and jump higher, or lose some hamsters to get smaller by running into cages, in order to reach the flag in a given level.
+
+Use the WASD keys to move around with W to jump. If you do not connect with someone online, you can also use the arrow keys as the second player's controls, to play together locally. You jump higher together so you may need a second player to win!
+
+The host can press R to restart the current level at any point."
+fit_content_height = true
 
 [node name="Margins" type="MarginContainer" parent="."]
 visible = false
