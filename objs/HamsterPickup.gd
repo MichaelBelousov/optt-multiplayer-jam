@@ -6,4 +6,4 @@ func on_area_entered(body: Node) -> void:
   if body is HamsterWheel:
     body.add_hamster()
     queue_free()
-    $AudioStreamPlayer.play()
+    $sfx_Gain_Hamster.play()
