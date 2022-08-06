@@ -39,40 +39,43 @@ margin_bottom = 10.9242
 rect_rotation = 90.0
 texture = SubResource( 2 )
 expand = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Layer2" type="ParallaxLayer" parent="SkyBg"]
 motion_scale = Vector2( 0.2, 0.2 )
 
 [node name="Cloud1" type="Sprite" parent="SkyBg/Layer2"]
-position = Vector2( 288, 184 )
+position = Vector2( 328, -88 )
 texture = ExtResource( 3 )
 
 [node name="Cloud3" type="Sprite" parent="SkyBg/Layer2"]
-position = Vector2( 344, 168 )
+position = Vector2( 384, -104 )
 texture = ExtResource( 4 )
 
 [node name="Cloud2" type="Sprite" parent="SkyBg/Layer2"]
-position = Vector2( 632, 224 )
+position = Vector2( 672, -48 )
 texture = ExtResource( 3 )
 
 [node name="Cloud4" type="Sprite" parent="SkyBg/Layer2"]
-position = Vector2( 520, 80 )
+position = Vector2( 560, -192 )
 texture = ExtResource( 4 )
 
 [node name="Cloud5" type="Sprite" parent="SkyBg/Layer2"]
-position = Vector2( 768, 160 )
+position = Vector2( 808, -112 )
 texture = ExtResource( 3 )
 
 [node name="Cloud6" type="Sprite" parent="SkyBg/Layer2"]
-position = Vector2( 112, 264 )
+position = Vector2( 152, -8 )
 texture = ExtResource( 4 )
 
 [node name="Cloud7" type="Sprite" parent="SkyBg/Layer2"]
-position = Vector2( 16, 208 )
+position = Vector2( 56, -64 )
 texture = ExtResource( 3 )
 
 [node name="Cloud8" type="Sprite" parent="SkyBg/Layer2"]
-position = Vector2( 280, 344 )
+position = Vector2( 320, 72 )
 texture = ExtResource( 3 )
 
 [node name="RestartNotifier" type="VisibilityNotifier2D" parent="."]
