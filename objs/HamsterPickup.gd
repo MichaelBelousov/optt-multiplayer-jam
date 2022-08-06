@@ -7,5 +7,6 @@ func on_area_entered(body: Node) -> void:
     body.call_deferred("add_hamster")
     queue_free()
     $sfx_Gain_Hamster.play()
+    print ("Gain Hamster")
 
 
