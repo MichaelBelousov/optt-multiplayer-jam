@@ -5,5 +5,9 @@
 
 [node name="Level1" instance=ExtResource( 1 )]
 
-[node name="Flag" parent="." index="6" instance=ExtResource( 3 )]
+[node name="Flag" parent="." index="4" instance=ExtResource( 3 )]
 position = Vector2( 1520, 400 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Flag" index="3"]
+margin_right = 40.0
+margin_bottom = 40.0
