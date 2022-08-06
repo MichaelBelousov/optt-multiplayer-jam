@@ -16,6 +16,6 @@ func get_has_hamster() -> bool:
 
 func on_area_entered(body: Node) -> void:
   if not has_hamster and body is HamsterWheel:
-    body.remove_hamster()
+    body.call_deferred("remove_hamster")
     self.has_hamster = true
     $sfx_Lose_Hamster.play()
