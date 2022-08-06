@@ -82,7 +82,7 @@ func _physics_process(delta: float) -> void:
 		input * air_touch_factor * BASE_IMPULSE * (get_child_count() - 2) * delta
 	)
 
-  # handle jump
+	# handle jump
 	var jump_strength = (
 		boolscalar(Input.is_action_pressed("move_up"))
 		+ boolscalar((is_p2_local and Input.is_action_pressed("p2_move_up")) or p2_remote_jump_input)
@@ -108,7 +108,5 @@ func _process(_delta: float) -> void:
 		rset_unreliable("rotation", rotation)
 	else:
 		# NOTE: may want to do this on _input for less lag?
-	  rset_unreliable("p2_remote_x_input", Input.get_axis(left_action, right_action))
-	  rset_unreliable("p2_remote_jump_input", Input.is_action_pressed(jump_action))
-
-
+		rset_unreliable("p2_remote_x_input", Input.get_axis(left_action, right_action))
+		rset_unreliable("p2_remote_jump_input", Input.is_action_pressed(jump_action))
