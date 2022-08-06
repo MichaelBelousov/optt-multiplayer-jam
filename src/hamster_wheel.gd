@@ -90,7 +90,10 @@ func _physics_process(delta: float) -> void:
 
   if touching_ground and jump_strength > 0 and jump_start_time == null:
     jump_start_time = OS.get_ticks_msec()
-    $sfx_Jump.play()
+    if jump_strength <= 1:
+      $sfx_Jump_Single.play()
+    else:
+      $sfx_Jump_Double.play()
   if jump_start_time != null and OS.get_ticks_msec() - jump_start_time > JUMP_IMPULSE_DURATION_MS:
     jump_start_time = null
 
