@@ -83,9 +83,9 @@ func on_client_connected():
 
 
 func on_start_pressed() -> void:
-	$UIClick.play()
-	yield($UIClick, "finished")
-	rpc("start")
+  $UIClick.play()
+  yield($UIClick, "finished")
+  rpc("start")
 
 
 # NOTE: possible we'll need to add a wait step on some synchronization due to lag, we'll see...
@@ -113,4 +113,4 @@ func on_toggle_sfx_on(button_pressed: bool) -> void:
 
 
 func _on_Tabs_tab_changed(tab):
-	$UIClick.play()
+  $UIClick.play()
