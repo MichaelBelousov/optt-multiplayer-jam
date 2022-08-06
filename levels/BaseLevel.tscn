@@ -51,7 +51,7 @@ position = Vector2( 328, -88 )
 texture = ExtResource( 3 )
 
 [node name="Cloud3" type="Sprite" parent="SkyBg/Layer2"]
-position = Vector2( 384, -104 )
+position = Vector2( 140, -282 )
 texture = ExtResource( 4 )
 
 [node name="Cloud2" type="Sprite" parent="SkyBg/Layer2"]
@@ -59,7 +59,7 @@ position = Vector2( 672, -48 )
 texture = ExtResource( 3 )
 
 [node name="Cloud4" type="Sprite" parent="SkyBg/Layer2"]
-position = Vector2( 560, -192 )
+position = Vector2( 1003, -362 )
 texture = ExtResource( 4 )
 
 [node name="Cloud5" type="Sprite" parent="SkyBg/Layer2"]
@@ -77,6 +77,70 @@ texture = ExtResource( 3 )
 [node name="Cloud8" type="Sprite" parent="SkyBg/Layer2"]
 position = Vector2( 320, 72 )
 texture = ExtResource( 3 )
+
+[node name="Cloud9" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( 495, 203 )
+texture = ExtResource( 4 )
+
+[node name="Cloud10" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( -112, 244 )
+texture = ExtResource( 4 )
+
+[node name="Cloud11" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( 1071, 34 )
+texture = ExtResource( 4 )
+
+[node name="Cloud12" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( -465, 108 )
+texture = ExtResource( 4 )
+
+[node name="Cloud13" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( -308, -49 )
+texture = ExtResource( 4 )
+
+[node name="Cloud14" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( -439, 128 )
+texture = ExtResource( 3 )
+
+[node name="Cloud15" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( 1202, 224 )
+texture = ExtResource( 3 )
+
+[node name="Cloud16" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( -875, -67 )
+texture = ExtResource( 4 )
+
+[node name="Cloud17" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( -675, 383 )
+texture = ExtResource( 3 )
+
+[node name="Cloud18" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( -174, 634 )
+texture = ExtResource( 4 )
+
+[node name="Cloud19" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( 380, 456 )
+texture = ExtResource( 3 )
+
+[node name="Cloud1" type="Sprite" parent="SkyBg/Layer2/Cloud19"]
+position = Vector2( 1384, 20 )
+texture = ExtResource( 3 )
+
+[node name="Cloud2" type="Sprite" parent="SkyBg/Layer2/Cloud19"]
+position = Vector2( 1508, -481 )
+texture = ExtResource( 4 )
+
+[node name="Cloud3" type="Sprite" parent="SkyBg/Layer2/Cloud19"]
+position = Vector2( 1177, -513 )
+texture = ExtResource( 3 )
+
+[node name="Cloud4" type="Sprite" parent="SkyBg/Layer2/Cloud19"]
+position = Vector2( -1437, -345 )
+texture = ExtResource( 4 )
+
+[node name="Cloud20" type="Sprite" parent="SkyBg/Layer2"]
+position = Vector2( 1184, 623 )
+texture = ExtResource( 4 )
 
 [node name="RestartNotifier" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 568, 312 )
