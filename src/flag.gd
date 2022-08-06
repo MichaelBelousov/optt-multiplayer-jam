@@ -19,12 +19,16 @@ func victory() -> void:
 
 
 func _unhandled_input(evt) -> void:
-  if evt is InputEventKey and  evt.scancode == KEY_SPACE and evt.pressed:
+  if evt is InputEventKey and  evt.scancode == KEY_SPACE and evt.pressed and is_network_master():
     try_accept_victory()
 
 
 func try_accept_victory() -> void:
   if not victory_satisified: return
+  rpc("goto_next_level")
+
+
+remotesync func goto_next_level() -> void:
   var cur_scene = get_tree().get_current_scene()
   match cur_scene.name:
     "Level1":
