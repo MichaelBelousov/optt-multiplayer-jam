@@ -10,7 +10,7 @@
 extents = Vector2( 356, 65.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 92, 141.5 )
+extents = Vector2( 92, 173 )
 
 [node name="Level2" instance=ExtResource( 1 )]
 
@@ -69,10 +69,11 @@ __meta__ = {
 }
 
 [node name="Shape" type="CollisionShape2D" parent="GroundBody2" index="0"]
-position = Vector2( 92, 146.5 )
+position = Vector2( 92, 115 )
 shape = SubResource( 2 )
 
 [node name="Texture" type="NinePatchRect" parent="GroundBody2" index="1"]
+margin_top = -63.0
 margin_right = 184.0
 margin_bottom = 288.0
 texture = ExtResource( 5 )
@@ -85,4 +86,4 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="Flag" parent="." index="7" instance=ExtResource( 2 )]
-position = Vector2( 1128, 400 )
+position = Vector2( 1220, 339 )

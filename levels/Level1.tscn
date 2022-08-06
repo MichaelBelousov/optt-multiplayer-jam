@@ -39,7 +39,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="GroundBody2" type="StaticBody2D" parent="Ground" index="1"]
-position = Vector2( 1447, 408 )
+position = Vector2( 1441, 408 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -67,4 +67,4 @@ position = Vector2( 271, 410 )
 position = Vector2( 334, 398 )
 
 [node name="Flag" parent="." index="5" instance=ExtResource( 3 )]
-position = Vector2( 1763, 417 )
+position = Vector2( 1757, 417 )

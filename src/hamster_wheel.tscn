@@ -8,7 +8,7 @@ mass = 4.0
 linear_damp = 0.5
 script = ExtResource( 1 )
 RAY_BASE_SIZE = 10.0
-JUMP_IMPULSE_DURATION_MS = 40.0
+JUMP_IMPULSE_DURATION_MS = 150.0
 Hamster = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

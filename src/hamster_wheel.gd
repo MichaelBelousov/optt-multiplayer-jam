@@ -4,7 +4,8 @@ extends RigidBody2D
 export var RAY_BASE_SIZE := 2.0
 export var BASE_RADIUS := 3.0
 export var BASE_IMPULSE := 50.0
-export var BASE_JUMP_FORCE := 8.0
+export var BASE_JUMP_FORCE: float = 30.0
+export var PER_HAMSTER_JUMP_FORCE: float = 1.5
 ## The multiplier of motion force when not touching the ground
 export var AIR_MOTION_FACTOR := 0.4
 export var JUMP_IMPULSE_DURATION_MS := 100.0
@@ -82,7 +83,6 @@ func _physics_process(delta: float) -> void:
 	)
 
   # handle jump
-
 	var jump_strength = (
 		boolscalar(Input.is_action_pressed("move_up"))
 		+ boolscalar((is_p2_local and Input.is_action_pressed("p2_move_up")) or p2_remote_jump_input)
@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 	if jump_start_time != null:
 		apply_impulse(
 			-Vector2.UP * BASE_RADIUS * (get_child_count() - 3),
-			Vector2.UP * jump_strength * BASE_JUMP_FORCE * (get_child_count() - 2)
+			Vector2.UP * jump_strength * (BASE_JUMP_FORCE + PER_HAMSTER_JUMP_FORCE * (get_child_count() - 2))
 		)
 	$RayCast2D.position = position
 	$RayCast2D.cast_to = Vector2(0, BASE_RADIUS * (get_child_count() - 3) + RAY_BASE_SIZE)

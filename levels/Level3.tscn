@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://levels/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/flag.tscn" type="PackedScene" id=2]
@@ -9,7 +9,13 @@
 [ext_resource path="res://objs/Cactus.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 740, 28 )
+extents = Vector2( 940, 28 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 108, 36 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 72, 92 )
 
 [node name="Level3" instance=ExtResource( 1 )]
 
@@ -21,34 +27,37 @@ position = Vector2( -288, 544 )
 
 [node name="Cages" type="Node" parent="." index="5"]
 
-[node name="Cage2" parent="Cages" index="0" instance=ExtResource( 4 )]
-position = Vector2( -32, 544 )
+[node name="Cage3" parent="Cages" index="0" instance=ExtResource( 4 )]
+position = Vector2( 1144, 544 )
 
-[node name="Cage3" parent="Cages" index="1" instance=ExtResource( 4 )]
-position = Vector2( 104, 544 )
+[node name="Cage4" parent="Cages" index="1" instance=ExtResource( 4 )]
+position = Vector2( 1184, 544 )
 
-[node name="Cage4" parent="Cages" index="2" instance=ExtResource( 4 )]
-position = Vector2( 144, 544 )
+[node name="Cage5" parent="Cages" index="2" instance=ExtResource( 4 )]
+position = Vector2( 1224, 544 )
 
-[node name="Cage5" parent="Cages" index="3" instance=ExtResource( 4 )]
-position = Vector2( 184, 544 )
+[node name="Cage6" parent="Cages" index="3" instance=ExtResource( 4 )]
+position = Vector2( 1264, 544 )
 
-[node name="Cage6" parent="Cages" index="4" instance=ExtResource( 4 )]
-position = Vector2( 224, 544 )
+[node name="Cage1" parent="Cages" index="4" instance=ExtResource( 4 )]
+position = Vector2( 1104, 544 )
 
-[node name="Cage1" parent="Cages" index="5" instance=ExtResource( 4 )]
-position = Vector2( 56, 544 )
+[node name="DesertBush" parent="." index="6" instance=ExtResource( 6 )]
+position = Vector2( 648, 539 )
 
-[node name="GroundBody1" type="StaticBody2D" parent="." index="6"]
+[node name="Cactus" parent="." index="7" instance=ExtResource( 7 )]
+position = Vector2( -239, 532 )
+
+[node name="GroundBody1" type="StaticBody2D" parent="." index="8"]
 position = Vector2( -64, 544 )
 
 [node name="Shape" type="CollisionShape2D" parent="GroundBody1" index="0"]
-position = Vector2( 340, 28 )
+position = Vector2( 540, 28 )
 shape = SubResource( 1 )
 
 [node name="Texture" type="NinePatchRect" parent="GroundBody1" index="1"]
 margin_left = -400.0
-margin_right = 1080.0
+margin_right = 1480.0
 margin_bottom = 56.0
 texture = ExtResource( 5 )
 region_rect = Rect2( 64, 32, 48, 48 )
@@ -59,8 +68,42 @@ patch_margin_bottom = 26
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="DesertBush" parent="GroundBody1" index="2" instance=ExtResource( 6 )]
-position = Vector2( -64, -5 )
+[node name="GroundBody3" type="StaticBody2D" parent="." index="9"]
+position = Vector2( -280, 416 )
 
-[node name="Cactus" parent="GroundBody1" index="3" instance=ExtResource( 7 )]
-position = Vector2( -175, -12 )
+[node name="Shape" type="CollisionShape2D" parent="GroundBody3" index="0"]
+position = Vector2( -76, 36 )
+shape = SubResource( 3 )
+
+[node name="Texture" type="NinePatchRect" parent="GroundBody3" index="1"]
+margin_left = -184.0
+margin_right = 32.0
+margin_bottom = 72.0
+texture = ExtResource( 5 )
+region_rect = Rect2( 64, 32, 48, 48 )
+patch_margin_left = 32
+patch_margin_top = 16
+patch_margin_right = 32
+patch_margin_bottom = 26
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="GroundBody2" type="StaticBody2D" parent="." index="10"]
+position = Vector2( -280, 416 )
+
+[node name="Shape" type="CollisionShape2D" parent="GroundBody2" index="0"]
+position = Vector2( -112, 92 )
+shape = SubResource( 2 )
+
+[node name="Texture" type="NinePatchRect" parent="GroundBody2" index="1"]
+margin_left = -184.0
+margin_right = -40.0
+margin_bottom = 184.0
+texture = ExtResource( 5 )
+region_rect = Rect2( 64, 32, 48, 48 )
+patch_margin_left = 32
+patch_margin_top = 16
+patch_margin_right = 32
+patch_margin_bottom = 26
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
