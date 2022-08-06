@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://levels/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://art-src/platforms.png" type="Texture" id=2]
 [ext_resource path="res://src/flag.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objs/Tree.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objs/FlowerBed.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 356, 65.5 )
@@ -48,6 +50,12 @@ patch_margin_right = 32
 patch_margin_bottom = 26
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[node name="FlowerBed" parent="Ground" index="2" instance=ExtResource( 5 )]
+position = Vector2( 271, 410 )
+
+[node name="Tree" parent="Ground" index="3" instance=ExtResource( 4 )]
+position = Vector2( 334, 398 )
 
 [node name="Flag" parent="." index="5" instance=ExtResource( 3 )]
 position = Vector2( 1512, 417 )
