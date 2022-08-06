@@ -7,6 +7,7 @@ export var BASE_IMPULSE := 50.0
 export var BASE_JUMP_FORCE := 8.0
 ## The multiplier of motion force when not touching the ground
 export var AIR_MOTION_FACTOR := 0.4
+export var JUMP_IMPULSE_DURATION_MS := 100.0
 
 export var Hamster: PackedScene
 
@@ -65,6 +66,7 @@ func set_hamster_position() -> void:
 static func boolscalar(b: bool) -> int:
 	return 1 if b else 0
 
+var jump_start_time = null
 
 func _physics_process(delta: float) -> void:
 	var touching_ground = $RayCast2D.is_colliding()
@@ -80,11 +82,18 @@ func _physics_process(delta: float) -> void:
 	)
 
   # handle jump
+
 	var jump_strength = (
 		boolscalar(Input.is_action_pressed("move_up"))
 		+ boolscalar((is_p2_local and Input.is_action_pressed("p2_move_up")) or p2_remote_jump_input)
 	)
-	if jump_strength > 0 and touching_ground:
+
+	if touching_ground and jump_strength > 0 and jump_start_time == null:
+		jump_start_time = OS.get_ticks_msec()
+	if jump_start_time != null and OS.get_ticks_msec() - jump_start_time > JUMP_IMPULSE_DURATION_MS:
+		jump_start_time = null
+
+	if jump_start_time != null:
 		apply_impulse(
 			-Vector2.UP * BASE_RADIUS * (get_child_count() - 3),
 			Vector2.UP * jump_strength * BASE_JUMP_FORCE * (get_child_count() - 2)

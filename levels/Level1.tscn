@@ -18,6 +18,9 @@ extents = Vector2( 356, 65.5 )
 
 [node name="GroundBody1" type="StaticBody2D" parent="Ground" index="0"]
 position = Vector2( 128, 408 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shape" type="CollisionShape2D" parent="Ground/GroundBody1" index="0"]
 position = Vector2( 356, 70.5 )
@@ -36,7 +39,10 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="GroundBody2" type="StaticBody2D" parent="Ground" index="1"]
-position = Vector2( 1196, 408 )
+position = Vector2( 1447, 408 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shape" type="CollisionShape2D" parent="Ground/GroundBody2" index="0"]
 position = Vector2( 356, 70.5 )
@@ -61,4 +67,4 @@ position = Vector2( 271, 410 )
 position = Vector2( 334, 398 )
 
 [node name="Flag" parent="." index="5" instance=ExtResource( 3 )]
-position = Vector2( 1512, 417 )
+position = Vector2( 1763, 417 )
