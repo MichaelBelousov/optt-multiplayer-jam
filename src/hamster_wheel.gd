@@ -21,11 +21,14 @@ var jump_action = "move_up"
 
 var is_p2_local = false
 
+var non_hamster_node_count := 0
+
 func _ready() -> void:
   rset_config("global_position", MultiplayerAPI.RPC_MODE_PUPPET)
   rset_config("rotation", MultiplayerAPI.RPC_MODE_PUPPET)
 
   $RayCast2D.set_as_toplevel(true)
+  non_hamster_node_count = get_child_count() # see the hamster-wheel-use-root branch for a cleaner fix that I don't trust yet
   for _i in 10:
     add_hamster()
 
@@ -40,6 +43,10 @@ func _ready() -> void:
       left_action = "p2_move_left"
       right_action = "p2_move_right"
       jump_action = "p2_move_jump"
+
+
+func hamster_count():
+	return get_child_count() - non_hamster_node_count
 
 
 func add_hamster() -> void:
@@ -59,8 +66,8 @@ func set_hamster_position() -> void:
   for child in get_children():
     if not child is CollisionShape2D:
       continue
-    child.position = Vector2(BASE_RADIUS * (get_child_count() - 3), 0).rotated((child.get_index() - 1.0) / (get_child_count() - 2) * (2 * PI))
-    child.rotation = (child.get_index() - 1.0) / (get_child_count() - 2) * (2 * PI)
+    child.position = Vector2(BASE_RADIUS * (hamster_count() - 1), 0).rotated((child.get_index() - 1.0) / hamster_count() * (2 * PI))
+    child.rotation = (child.get_index() - 1.0) / hamster_count() * (2 * PI)
 
 
 ## convert a boolean to an int that can be added
@@ -78,8 +85,8 @@ func _physics_process(delta: float) -> void:
   var input := Vector2(p1_input + p2_input, 0)
   var air_touch_factor = 1.0 if touching_ground else AIR_MOTION_FACTOR
   apply_impulse(
-    -input * BASE_RADIUS * (get_child_count() - 3),
-    input * air_touch_factor * BASE_IMPULSE * (get_child_count() - 2) * delta
+    -input * BASE_RADIUS * (hamster_count() - 1),
+    input * air_touch_factor * BASE_IMPULSE * hamster_count() * delta
   )
 
   # handle jump
@@ -99,11 +106,11 @@ func _physics_process(delta: float) -> void:
 
   if jump_start_time != null:
     apply_impulse(
-      -Vector2.UP * BASE_RADIUS * (get_child_count() - 3),
-      Vector2.UP * jump_strength * (BASE_JUMP_FORCE + PER_HAMSTER_JUMP_FORCE * (get_child_count() - 2))
+      -Vector2.UP * BASE_RADIUS * (hamster_count() - 1),
+      Vector2.UP * jump_strength * (BASE_JUMP_FORCE + PER_HAMSTER_JUMP_FORCE * hamster_count())
     )
   $RayCast2D.position = position
-  $RayCast2D.cast_to = Vector2(0, BASE_RADIUS * (get_child_count() - 3) + RAY_BASE_SIZE)
+  $RayCast2D.cast_to = Vector2(0, BASE_RADIUS * (hamster_count() - 1) + RAY_BASE_SIZE)
 
 
 func _process(_delta: float) -> void:
