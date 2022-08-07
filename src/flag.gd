@@ -36,6 +36,8 @@ remotesync func goto_next_level() -> void:
     "Level2":
       get_tree().change_scene("res://levels/Level3.tscn")
     "Level3":
+      get_tree().change_scene("res://levels/Level4.tscn")
+    "Level4":
       get_tree().change_scene("res://levels/victory_level.tscn")
     _:
       push_error("no other levels should ever be loaded with a victory condition")

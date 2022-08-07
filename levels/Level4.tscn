@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://levels/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/flag.tscn" type="PackedScene" id=2]
@@ -7,11 +7,9 @@
 [ext_resource path="res://art-src/platforms.png" type="Texture" id=5]
 [ext_resource path="res://objs/DesertBush.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objs/Cactus.tscn" type="PackedScene" id=7]
-[ext_resource path="res://art-src/sign-left.png" type="Texture" id=8]
-[ext_resource path="res://objs/HamsterPickup.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 700, 28 )
+extents = Vector2( 940, 28 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 108, 36 )
@@ -25,7 +23,7 @@ extents = Vector2( 72, 92 )
 stream = ExtResource( 3 )
 
 [node name="Flag" parent="." index="4" instance=ExtResource( 2 )]
-position = Vector2( 184, 544 )
+position = Vector2( -288, 544 )
 
 [node name="Cages" type="Node" parent="." index="5"]
 
@@ -48,17 +46,17 @@ position = Vector2( 1104, 544 )
 position = Vector2( 648, 539 )
 
 [node name="Cactus" parent="." index="7" instance=ExtResource( 7 )]
-position = Vector2( 281, 532 )
+position = Vector2( -239, 532 )
 
 [node name="GroundBody1" type="StaticBody2D" parent="." index="8"]
 position = Vector2( -64, 544 )
 
 [node name="Shape" type="CollisionShape2D" parent="GroundBody1" index="0"]
-position = Vector2( 780, 28 )
+position = Vector2( 540, 28 )
 shape = SubResource( 1 )
 
 [node name="Texture" type="NinePatchRect" parent="GroundBody1" index="1"]
-margin_left = 88.0
+margin_left = -400.0
 margin_right = 1480.0
 margin_bottom = 56.0
 texture = ExtResource( 5 )
@@ -71,7 +69,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="GroundBody3" type="StaticBody2D" parent="." index="9"]
-position = Vector2( 200, 416 )
+position = Vector2( -280, 416 )
 
 [node name="Shape" type="CollisionShape2D" parent="GroundBody3" index="0"]
 position = Vector2( -76, 36 )
@@ -91,7 +89,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="GroundBody2" type="StaticBody2D" parent="." index="10"]
-position = Vector2( 200, 416 )
+position = Vector2( -280, 416 )
 
 [node name="Shape" type="CollisionShape2D" parent="GroundBody2" index="0"]
 position = Vector2( -112, 92 )
@@ -109,24 +107,3 @@ patch_margin_right = 32
 patch_margin_bottom = 26
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-
-[node name="DesertBush2" parent="." index="11" instance=ExtResource( 6 )]
-position = Vector2( 298, 539 )
-
-[node name="HamsterPickup" parent="." index="12" instance=ExtResource( 9 )]
-position = Vector2( 249, 544 )
-
-[node name="Sign-left" type="Sprite" parent="." index="13"]
-position = Vector2( 419, 536 )
-texture = ExtResource( 8 )
-
-[node name="Cactus2" parent="." index="14" instance=ExtResource( 7 )]
-position = Vector2( 200, 409.5 )
-scale = Vector2( 0.833333, 0.541667 )
-flip_h = true
-
-[node name="Cactus3" parent="." index="15" instance=ExtResource( 7 )]
-position = Vector2( 1028, 532 )
-
-[node name="DesertBush3" parent="." index="16" instance=ExtResource( 6 )]
-position = Vector2( 1346, 539 )
