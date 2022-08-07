@@ -10,7 +10,8 @@ config_version=4
 
 [application]
 
-config/name="optt-multiplayer-jam"
+config/name="Hamster King"
+config/description="You're tired of running in a hamster wheel. Become the wheel. Become King."
 run/main_scene="res://ui/ConnectMenu.tscn"
 config/icon="res://art-src/hamster.png"
 
