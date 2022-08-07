@@ -72,9 +72,14 @@ static func boolscalar(b: bool) -> int:
   return 1 if b else 0
 
 var jump_start_time = null
+var prev_touching_ground := false
 
 func _physics_process(delta: float) -> void:
   var touching_ground = $RayCast2D.is_colliding()
+  var is_touching_ground_changed = touching_ground != prev_touching_ground 
+  if is_touching_ground_changed:
+    $sfx_Landing.play()
+    prev_touching_ground = touching_ground
 
   # handle left-right movement
   var p1_input = Input.get_axis("move_left", "move_right")
@@ -91,6 +96,7 @@ func _physics_process(delta: float) -> void:
     boolscalar(Input.is_action_pressed("move_up"))
     + boolscalar((is_p2_local and Input.is_action_pressed("p2_move_up")) or p2_remote_jump_input)
   )
+
 
   if touching_ground and jump_strength > 0 and jump_start_time == null:
     jump_start_time = OS.get_ticks_msec()
