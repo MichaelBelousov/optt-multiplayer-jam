@@ -78,7 +78,9 @@ func _physics_process(delta: float) -> void:
   var touching_ground = $RayCast2D.is_colliding()
   var is_touching_ground_changed = touching_ground != prev_touching_ground 
   if is_touching_ground_changed:
-    $sfx_Landing.play()
+    var landed = not prev_touching_ground
+    if landed:
+      $sfx_Landing.play()
     prev_touching_ground = touching_ground
 
   # handle left-right movement
