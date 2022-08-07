@@ -12,6 +12,8 @@ export var JUMP_IMPULSE_DURATION_MS := 100.0
 
 export var Hamster: PackedScene
 
+onready var hamster_root: Node = $HamsterRoot
+
 remote var p2_remote_x_input := 0.0
 remote var p2_remote_jump_input := false
 
@@ -44,23 +46,22 @@ func _ready() -> void:
 
 func add_hamster() -> void:
   var h := Hamster.instance()
-  add_child(h)
+  hamster_root.add_child(h)
   set_hamster_position()
 
 
 func remove_hamster() -> void:
-  var h := get_child(get_child_count() - 1)
-  remove_child(h)
+  var h := hamster_root.get_child(get_child_count() - 1)
+  hamster_root.remove_child(h)
   h.queue_free()
   set_hamster_position()
 
 
 func set_hamster_position() -> void:
-  for child in get_children():
-    if not child is CollisionShape2D:
-      continue
-    child.position = Vector2(BASE_RADIUS * (get_child_count() - 3), 0).rotated((child.get_index() - 1.0) / (get_child_count() - 2) * (2 * PI))
-    child.rotation = (child.get_index() - 1.0) / (get_child_count() - 2) * (2 * PI)
+  var hamster_count = hamster_root.get_child_count()
+  for child in hamster_root.get_children():
+    child.position = Vector2(BASE_RADIUS * (hamster_count - 1), 0).rotated((child.get_index() - 1.0) / hamster_count * (2 * PI))
+    child.rotation = (child.get_index() - 1.0) / hamster_count * (2 * PI)
 
 
 ## convert a boolean to an int that can be added
@@ -71,6 +72,7 @@ var jump_start_time = null
 
 func _physics_process(delta: float) -> void:
   var touching_ground = $RayCast2D.is_colliding()
+  var hamster_count = hamster_root.get_child_count()
 
   # handle left-right movement
   var p1_input = Input.get_axis("move_left", "move_right")
@@ -78,8 +80,8 @@ func _physics_process(delta: float) -> void:
   var input := Vector2(p1_input + p2_input, 0)
   var air_touch_factor = 1.0 if touching_ground else AIR_MOTION_FACTOR
   apply_impulse(
-    -input * BASE_RADIUS * (get_child_count() - 3),
-    input * air_touch_factor * BASE_IMPULSE * (get_child_count() - 2) * delta
+    -input * BASE_RADIUS * (hamster_count - 1),
+    input * air_touch_factor * BASE_IMPULSE * hamster_count * delta
   )
 
   # handle jump
@@ -99,11 +101,11 @@ func _physics_process(delta: float) -> void:
 
   if jump_start_time != null:
     apply_impulse(
-      -Vector2.UP * BASE_RADIUS * (get_child_count() - 3),
-      Vector2.UP * jump_strength * (BASE_JUMP_FORCE + PER_HAMSTER_JUMP_FORCE * (get_child_count() - 2))
+      -Vector2.UP * BASE_RADIUS * (hamster_count - 1),
+      Vector2.UP * jump_strength * (BASE_JUMP_FORCE + PER_HAMSTER_JUMP_FORCE * hamster_count)
     )
   $RayCast2D.position = position
-  $RayCast2D.cast_to = Vector2(0, BASE_RADIUS * (get_child_count() - 3) + RAY_BASE_SIZE)
+  $RayCast2D.cast_to = Vector2(0, BASE_RADIUS * (hamster_count - 1) + RAY_BASE_SIZE)
 
 
 func _process(_delta: float) -> void:

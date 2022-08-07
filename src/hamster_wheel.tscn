@@ -29,3 +29,5 @@ bus = "sfx"
 stream = ExtResource( 4 )
 volume_db = 1.0
 bus = "sfx"
+
+[node name="HamsterRoot" type="Node2D" parent="."]
